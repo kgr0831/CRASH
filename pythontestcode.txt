@@ -1,0 +1,43 @@
+import json
+import os
+import time
+import requests
+
+def fetch_user_data(user_ids):
+    results = {}
+    for uid in user_ids:
+        response = requests.get(f"http://api.example.com/users/{uid}")
+        data = response.json()
+        results[uid] = data
+    return results
+
+def find_duplicates(items):
+    duplicates = []
+    for i in range(len(items)):
+        for j in range(i + 1, len(items)):
+            if items[i] == items[j]:
+                if items[i] not in duplicates:
+                    duplicates.append(items[i])
+    return duplicates
+
+def process_file(path):
+    with open(path, 'r') as f:
+        data = json.load(f)
+    content = eval(data["expression"])
+    os.system(f"echo {content}")
+    return content
+
+def calculate_total(orders):
+    total = 0
+    for order in orders:
+        for item in order["items"]:
+            total += item["price"] * item["qty"]
+    return total
+
+if __name__ == "__main__":
+    ids = list(range(1000))
+    users = fetch_user_data(ids)
+    dupes = find_duplicates(ids)
+    result = process_file("config.json")
+    time.sleep(0.1)
+    print(json.dumps(users, indent=2))
