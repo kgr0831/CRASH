@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import AuthProvider from "@/components/AuthProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "CRASH — Code Risk Avoidance Safety Helper",
   description: "코드의 위험도를 열화상 카메라처럼 시각화합니다.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +29,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

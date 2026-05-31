@@ -1,0 +1,7 @@
+Design/
+*.md
+!README.md
+run.bat
+.env
+.env.example
+CSS.code-workspace

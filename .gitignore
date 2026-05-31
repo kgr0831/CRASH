@@ -8,3 +8,8 @@ node_modules/
 .next/
 out/
 next-env.d.ts
+client_secret_*.json
+*.code-workspace
+.claude/
+
+
